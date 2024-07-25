@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# This notebook looks at the downloaded mnist data and looks into the image dataloader and rolling window data class.
-# Noteably, this code is modified from the original code written by Xinqiang Ding <xqding@umich.edu>
+# This notebook looks at the downloaded MNIST data and looks into the image dataloader and rolling window data class.
+# Notably, this code is modified from the original code written by [original code](https://github.com/xqding/TD-VAE/blob/master/script/download_MNIST.py) by Xinqiang Ding <xqding@umich.edu>
 
 # In[1]:
 
@@ -33,13 +33,14 @@ mnist_pickle_path = pathlib.Path("../../data/mnist/MNIST.pkl").resolve(strict=Tr
 with open(mnist_pickle_path, "rb") as file_handle:
     MNIST = pickle.load(file_handle)
 
+
 # In[3]:
 
 
 # get the MNIST data keys
 print(MNIST.keys())
-# MNIST["train_label"][:15]
 MNIST["train_image"][0].shape
+
 
 # In[4]:
 
@@ -57,6 +58,7 @@ data_loader = DataLoader(data, batch_size=batch_size, shuffle=True)
 # get the first batch of data
 batch, sample = next(enumerate(data_loader))
 
+
 # In[5]:
 
 
@@ -67,10 +69,9 @@ print(f"{len(idx)} images in the batch")
 print(f"labels: {labels.shape}")
 print(f"images: {images.shape}")
 
+
 # In[6]:
 
-
-# number of images to vizualize
 
 # get the number of images in the sequence
 images_in_seq = images[0].shape[0]
@@ -83,5 +84,6 @@ for i in range(batch_size):
         plt.imshow(images[i][j].reshape(28, 28), cmap="gray")
         plt.axis("off")
 plt.show()
+
 
 # Ahh, yes. We are ready to begin a journey in time....

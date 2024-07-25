@@ -1,0 +1,27 @@
+name: transformers_env
+
+channels:
+- conda-forge
+
+dependencies:
+  # this is restricted to Python 3.8 at this time due to other conflicts
+  - conda-forge::python=3.12
+  - conda-forge::ipykernel
+  - conda-forge::jupyterlab
+  - conda-forge::nbconvert
+  - conda-forge::pip
+  - conda-forge::matplotlib
+  - conda-forge::seaborn
+  - conda-forge::pandas
+  - conda-forge::scikit-image
+  - conda-forge::scikit-learn
+  - conda-forge::opencv
+  - pip:
+    - 'transformers[torch]'
+    - mnist
+    - beautifulsoup4
+    - tqdm
+    - py7zr
+    - zipfile
+    - tifffile
+
